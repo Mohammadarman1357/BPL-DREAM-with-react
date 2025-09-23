@@ -95,3 +95,6 @@ Page with Available Players
 <hr/>
 Page with Selected Players
 <img src="application-design/main-2.jpg"/>
+
+# Deploy Web
+- https://bpl-dream-with-react-arman.netlify.app/
