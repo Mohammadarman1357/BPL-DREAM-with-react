@@ -1,5 +1,15 @@
 [
   {
+    "player_image": "https://i.ibb.co.com/Q7jwmSPL/64d2b07a-0100-4c02-a6e9-b02a03da9c18.jpg",
+    "player_name": "Mohammad Arman",
+    "player_country": "Bangladesh",
+    "player_role": "Developer",
+    "rating": 9.8,
+    "batting_style": "Right-hand Bat",
+    "bowling_style": "Fast Right-arm Orthodox",
+    "price": "250,000 USD"
+  },
+  {
     "player_image": "https://i.ibb.co.com/rfcMzjpD/sakib.jpgg",
     "player_name": "Shakib Al Hasan",
     "player_country": "Bangladesh",

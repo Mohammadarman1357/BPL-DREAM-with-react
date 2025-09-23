@@ -17,17 +17,27 @@ function App() {
   const [availableBalance, setAvailableBalance] = useState(600000)
   const [purchasePlayers, setPurchasePlayers] = useState([])
 
+  const removePlayer = (p) => {
+    const filteredPlayer = purchasePlayers.filter(ply => ply.player_name !== p.player_name)
+    setPurchasePlayers(filteredPlayer)
+    setAvailableBalance(availableBalance + parseInt(p.price.split("USD").join("").split(",").join("")))
+  };
+
   return (
     <>
       <Navbar availableBalance={availableBalance}></Navbar>
 
       <div className='max-w-[1200px] mx-auto flex justify-between items-center sora-font'>
-        <h1 className='font-bold text-2xl'>Available Players</h1>
+        <h1 className='font-bold text-2xl'>
+          {
+            toggle === true ? "Available Players" : `Selected Player (${purchasePlayers.length}/6)`
+          }
+        </h1>
 
         <div>
 
           <button onClick={() => setToggle(true)} className={`px-6 py-3 border-1 border-r-0 border-gray-400 rounded-l-2xl font-bold ${toggle === true ? "bg-[#e7fe29]" : "bg-none"}`}>Available</button>
-          <button onClick={() => setToggle(false)} className={`px-6 py-3 border-1 border-l-0 border-gray-400 rounded-r-2xl font-bold ${toggle === false ? "bg-[#e7fe29]" : "bg-none"}`}>Selected <span>(0)</span></button>
+          <button onClick={() => setToggle(false)} className={`px-6 py-3 border-1 border-l-0 border-gray-400 rounded-r-2xl font-bold ${toggle === false ? "bg-[#e7fe29]" : "bg-none"}`}>Selected <span>({purchasePlayers.length})</span></button>
 
         </div>
       </div>
@@ -35,7 +45,7 @@ function App() {
       {
         toggle === true ? <Suspense fallback={<span className="loading loading-spinner loading-xl"></span>}>
           <AvailablePlayers purchasePlayers={purchasePlayers} setPurchasePlayers={setPurchasePlayers} availableBalance={availableBalance} setAvailableBalance={setAvailableBalance} playerPromise={playerPromise}></AvailablePlayers>
-        </Suspense> : <SelectedPlayers purchasePlayers={purchasePlayers}></SelectedPlayers>
+        </Suspense> : <SelectedPlayers removePlayer={removePlayer} purchasePlayers={purchasePlayers}></SelectedPlayers>
       }
 
     </>
