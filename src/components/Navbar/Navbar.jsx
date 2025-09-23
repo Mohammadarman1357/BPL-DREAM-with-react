@@ -3,7 +3,7 @@ import navImg from '../../assets/logo.png';
 import dollarImg from '../../assets/dollar.png';
 
 
-const Navbar = () => {
+const Navbar = ({availableBalance}) => {
     return (
         <div className="navbar sora-font max-w-[1200px] mx-auto">
             <div className="navbar-start">
@@ -32,7 +32,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 <div className='flex items-center font-semibold text-[#131313b3] btn btn-outline rounded-xl py-4 px-5 border-[#1313131a]'>
-                    <span>60000000000</span>
+                    <span>{availableBalance}</span>
                     <span className='mx-2'>Coin</span>
                     <img className='w-6 h-6' src={dollarImg} alt="" />
                 </div>
